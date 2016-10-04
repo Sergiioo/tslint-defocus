@@ -1,6 +1,6 @@
 {
-  "rulesDirectory": "../../../dist",
+  "rulesDirectory": "../../../../dist",
   "rules": {
-    "defocus": [true]
+    "defocus": true
   }
 }

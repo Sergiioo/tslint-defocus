@@ -4,7 +4,7 @@ declare function fit(expectation: string, assertion?: (done: DoneFn) => void, ti
 
 //  ------------------------------------------------------------------
 //  As per the docs, you can run this test with tslint directly using:
-//  tslint --test test/rules/defocus
+//  tslint --test src/test/rules/defocus
 /   ------------------------------------------------------------------
 
 describe(() => {
