@@ -1,0 +1,45 @@
+declare function fdescribe(description: string, specDefinitions: () => void): void;
+declare function fit(expectation: string, assertion?: () => void, timeout?: number): void;
+declare function fit(expectation: string, assertion?: (done: DoneFn) => void, timeout?: number): void;
+
+//  ------------------------------------------------------------------
+//  As per the docs, you can run this test with tslint directly using:
+//  tslint --test test/rules/defocus
+/   ------------------------------------------------------------------
+
+describe(() => {
+    //  this one is ok
+});
+
+fdescribe(() => {
+~~~~~~~~~               [Calls to 'fdescribe' are not allowed.]
+    fit(() => {});
+    ~~~                 [Calls to 'fit' are not allowed.]
+});
+
+describe(() => {
+    fdescribe(() => {
+    ~~~~~~~~~           [Calls to 'fdescribe' are not allowed.]
+    });
+});
+
+//  in a comment, so ok: fdescibe, fit()
+
+fdescribe(function(){});
+~~~~~~~~~               [Calls to 'fdescribe' are not allowed.]
+
+abcdefdescribe(function(){
+})
+
+function(){
+    console.log('fit', 'function');
+}
+
+export class Test {
+    constructor() {
+        this.fdescribe();
+    }
+    
+    public fdescribe(): void {
+    }
+}
