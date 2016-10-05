@@ -30,9 +30,11 @@ gulp.task('tslint', function () {
 });
 
 gulp.task('test', function () {
-    return gulp
-        .src('dist/**/*spec.js')
-        .pipe(mocha());
+    runSequence('tsc', function () {
+        return gulp
+            .src('dist/**/*spec.js')
+            .pipe(mocha());
+    })
 });
 
 gulp.task('default', function (done) {
