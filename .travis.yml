@@ -3,11 +3,12 @@ language: node_js
 cache:
   directories:
   - node_modules
-  - jspm_packages
 notifications:
   email: true
 node_js:
-  - '4.2'
+  - '6'
+  - '5'
+  - '4'
 before_script:
   - npm prune
 before_install:

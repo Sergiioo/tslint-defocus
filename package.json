@@ -46,6 +46,7 @@
     "update": "npm install --no-optional",
     "outdated": "npm outdated",
     "help": "gulp help",
+    "test": "gulp test",
     "setup": "npm install --no-optional"
   }
 }
