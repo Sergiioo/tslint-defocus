@@ -1,0 +1,17 @@
+.vscode
+.idea
+.vs
+dist/test
+src
+typings
+.editorconfig
+.gitignore
+.gitattributes
+.jshintignore
+.jshintrc
+.npmignore
+.travis.yml
+gulpfile.js
+tsconfig.json
+tslint.json
+generate-changelog.bat
