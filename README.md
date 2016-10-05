@@ -4,7 +4,7 @@
 This is a tslint rule that warns about focussed Jasmine tests - fdescribe and fit
 
 ## Usage
-* Install with: `npm install --save-dev`
+* Install with: `npm install tslint-defocus --save-dev`
 * Add the rule to your `.tslint.json` file:
 ```
   "rulesDirectory": "./node_modules/tslint-defocus/dist",
@@ -20,7 +20,8 @@ This is a tslint rule that warns about focussed Jasmine tests - fdescribe and fi
 (defocus) app.ts[8, 5]: Calls to 'fit' are not allowed.
 ```
 
-## How to build
-First, make sure that you have installed the required global npm packages: `npm install gulp --global --no-optional`.
-
-Next, you also need to install the project dependencies using `npm run setup`.
+## Developer instructions
+* installed the required global npm packages: `npm install gulp --global --no-optional`.
+* Clone [from github](https://github.com/Sergiioo/tslint-defocus)
+* Run `npm run setup` to install and get started
+* Build, lint and unit test by running the default gulp task with: `gulp`
