@@ -1,8 +1,13 @@
 {
   "resolution": "main",
   "tree": {
-    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/a361a8ab3c327f208d3f82ad206971d4a63d8c25/mocha/mocha.d.ts",
-    "raw": "registry:dt/mocha#2.2.5+20160720003353",
-    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/a361a8ab3c327f208d3f82ad206971d4a63d8c25/mocha/mocha.d.ts"
+    "src": "https://raw.githubusercontent.com/types/env-mocha/00448206f9f7f26fc62d3ef306fc9364094e8c2e/typings.json",
+    "raw": "registry:env/mocha#2.2.5+20160926180742",
+    "files": [
+      "lib/global.d.ts",
+      "lib/mocha.d.ts"
+    ],
+    "name": "mocha",
+    "type": "typings"
   }
 }
