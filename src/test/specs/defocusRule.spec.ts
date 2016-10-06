@@ -1,7 +1,7 @@
 /// <reference path='../../../typings/modules/chai/index.d.ts' />
 
 import * as Lint from "tslint/lib/lint";
-import {expect} from "chai/lib/Chai";
+import {expect} from "chai/lib/chai";
 
 export function testScript(rule: string, scriptText: string, config: Object): boolean {
     const options: Lint.ILinterOptions = {
