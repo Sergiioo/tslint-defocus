@@ -9,7 +9,5 @@ node_js:
   - '6'
   - '5'
   - '4'
-before_script:
-  - npm prune
 before_install:
   - npm run setup
