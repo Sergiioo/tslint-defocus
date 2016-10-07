@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/Sergiioo/tslint-defocus.svg?branch=master)](https://travis-ci.org/Sergiioo/tslint-defocus)
+[![NPM Version](https://img.shields.io/npm/v/tslint-defocus.svg)](https://www.npmjs.com/package/tslint-defocus)
+[![License](https://img.shields.io/npm/l/tslint-defocus.svg)](LICENSE)
+
 # tslint-defocus
 
 ## About
@@ -25,3 +29,6 @@ This is a tslint rule that warns about focussed Jasmine tests - fdescribe and fi
 * Clone [from github](https://github.com/Sergiioo/tslint-defocus)
 * Run `npm run setup` to install and get started
 * Build, lint and unit test by running the default gulp task with: `gulp`
+
+## License
+MIT
