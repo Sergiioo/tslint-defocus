@@ -23,7 +23,7 @@
     "url": "https://github.com/Sergiioo/tslint-defocus/issues"
   },
   "license": "MIT",
-  "version": "1.0.2",
+  "version": "2.0.1",
   "dependencies": {
     "@types/chai": "^4.0.1",
     "@types/mocha": "^2.2.41",
