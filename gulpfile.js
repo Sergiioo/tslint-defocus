@@ -3,18 +3,18 @@ var runSequence = require('run-sequence');
 var ts = require('gulp-typescript');
 var del = require('del');
 var tslint = require('gulp-tslint');
-const mocha = require('gulp-spawn-mocha');
+var mocha = require('gulp-spawn-mocha');
+
 var tsProject = ts.createProject('tsconfig.json');
 
 gulp.task('clean', function () {
     return del('dist');
 });
 
-gulp.task('tsc', function () {
-    var tsResult = tsProject.src() // instead of gulp.src(...) 
-        .pipe(tsProject());
-
-    return tsResult.js.pipe(gulp.dest('dist'));
+gulp.task("tsc", function () {
+    return tsProject.src()
+        .pipe(tsProject())
+        .js.pipe(gulp.dest("dist"));
 });
 
 gulp.task('tslint', function () {

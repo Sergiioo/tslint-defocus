@@ -1,71 +1,63 @@
-/// <reference path='../../../typings/modules/chai/index.d.ts' />
+import {expect} from "chai";
+import * as fs from "fs";
+import * as path from "path";
+import * as ts from "typescript";
+import * as Lint from "tslint";;
 
-import * as Lint from "tslint/lib/lint";
-import {expect} from "chai/lib/chai";
+import {Rule} from "../../defocusRule";
 
-export function testScript(rule: string, scriptText: string, config: Object): boolean {
-    const options: Lint.ILinterOptions = {
-        configuration: config,
-        formatter: 'json',
-        formattersDirectory: 'dist/formatters/',
-        rulesDirectory: 'dist/'
-    };
+const ruleName = 'defocus';
 
-    const linter = new Lint.Linter(`${rule}.ts`, scriptText, options);
-    const result = linter.lint();
+const ruleOptions: Readonly<Lint.IOptions> = {
+    disabledIntervals: [],
+    ruleArguments: [],
+    ruleName,
+    ruleSeverity: "error"
+};
 
-    const failures = JSON.parse(result.output);
+describe(ruleName, function test() {
 
-    return failures.length === 0;
-}
-
-const rule = 'defocus';
-const codeSnippets: string[] = [
-    'fdescribe(() => { console.log("testing") });',
-    'describe(() => { fit(() => { console.log("testing)}) });',
-    'const test = { test: 123 }',
-    'const fdescribe = { test: 123 }',
-    'let testObject = { fit: "test", test: "fit" }',
-    'function(fdescribe, fit){ console.log(fdescribe, fit); }();'
-];
-
-describe(rule, function test() {
-
-    const tsLintConfig = {rules: {'defocus': [true]}};
-
-    it('should fail when "fdescribe" is called', function () {
-        const code = codeSnippets[0];
-        const result = testScript(rule, code, tsLintConfig);
-        expect(result).to.equal(false, code);
+    it('should fail when "fdescribe" is called', () => {
+        const sourceFile = getSourceFile('shouldFailWhenFDescribeCalled.ts');
+        const failures = new Rule(ruleOptions).apply(sourceFile);
+        expect(failures).length(1);
+        expect(failures[0].getFailure()).eq('Calls to \'fdescribe\' are not allowed.');
     });
 
-    it('should fail when "fit" is called', function () {
-        const code = codeSnippets[1];
-        const result = testScript(rule, code, tsLintConfig);
-        expect(result).to.equal(false, code);
+    it('should fail when "fit" is called', () => {
+        const sourceFile = getSourceFile('shouldFailWhenFitCalled.ts');
+        const failures = new Rule(ruleOptions).apply(sourceFile);
+        expect(failures).length(1);
+        expect(failures[0].getFailure()).eq('Calls to \'fit\' are not allowed.');
     });
 
-    it('should not fail for a snippet without "fit" or "fdescribe"', function () {
-        const code = codeSnippets[2];
-        const result = testScript(rule, code, tsLintConfig);
-        expect(result).to.equal(true, code);
+    it('should not fail for a snippet without "fit" or "fdescribe"', () => {
+        const sourceFile = getSourceFile('shouldPassWithoutFitOrFDescribe.ts');
+        const failures = new Rule(ruleOptions).apply(sourceFile);
+        expect(failures).length(0);
     });
 
-    it('should not flag a false alert if "fdescribe" appears as a variable name', function () {
-        const code = codeSnippets[3];
-        const result = testScript(rule, code, tsLintConfig);
-        expect(result).to.equal(true, code);
+    it('should not flag a false alert if "fdescribe" appears as a variable name', () => {
+        const sourceFile = getSourceFile('allowsFDescribeAsVariableName.ts');
+        const failures = new Rule(ruleOptions).apply(sourceFile);
+        expect(failures).length(0);
     });
 
-    it('should not flag a false alert if "fit" appears as a object property key or value', function () {
-        const code = codeSnippets[4];
-        const result = testScript(rule, code, tsLintConfig);
-        expect(result).to.equal(true, code);
+    it('should not flag a false alert if "fit" appears as a object property key or value', () => {
+        const sourceFile = getSourceFile('allowsFitAsPropKeyValue.ts');
+        const failures = new Rule(ruleOptions).apply(sourceFile);
+        expect(failures).length(0);
     });
 
-    it('should not flag a false alert if "fdescribe" or "fit" appear as function parameters ', function () {
-        const code = codeSnippets[5];
-        const result = testScript(rule, code, tsLintConfig);
-        expect(result).to.equal(true, code);
+    it('should not flag a false alert if "fdescribe" or "fit" appear as function parameters', () => {
+        const sourceFile = getSourceFile('allowsFdescribeFitAsFunctionParams.ts');
+        const failures = new Rule(ruleOptions).apply(sourceFile);
+        expect(failures).length(0);
     });
 });
+
+function getSourceFile(fileName: string): ts.SourceFile {
+    const relativePath = path.join("src", "test", "specs", "snippets", fileName);
+    const source = fs.readFileSync(relativePath, "utf8");
+    return Lint.getSourceFile(fileName, source);
+}
