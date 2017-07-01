@@ -50,7 +50,7 @@ describe(ruleName, function test() {
     });
 
     it('should not flag a false alert if "fdescribe" or "fit" appear as function parameters', () => {
-        const sourceFile = getSourceFile('allowsFdescribeFitAsFunctionParams.ts');
+        const sourceFile = getSourceFile('allowsFDescribeFitAsFunctionParams.ts');
         const failures = new Rule(ruleOptions).apply(sourceFile);
         expect(failures).length(0);
     });
