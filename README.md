@@ -24,6 +24,10 @@ This is a tslint rule that warns about focussed Jasmine tests - fdescribe and fi
 (defocus) app.ts[8, 5]: Calls to 'fit' are not allowed.
 ```
 
+## Dependencies
+
+Version 2.0.x of this rule requires version 5.x of tslint.
+
 ## Developer instructions
 * installed the required global npm packages: `npm install gulp --global --no-optional`.
 * Clone [from github](https://github.com/Sergiioo/tslint-defocus)
