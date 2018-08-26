@@ -9,9 +9,11 @@ This is a tslint rule that warns about focussed Jasmine tests - fdescribe and fi
 
 ## Usage
 * Install with: `npm install tslint-defocus --save-dev`
-* Add the rule to your `.tslint.json` file:
+* Extend this package in your `.tslint.json` file, e.g.:
 ```
-  "rulesDirectory": "./node_modules/tslint-defocus/dist",
+  "extends": [
+    "tslint-defocus"
+  ],
   "rules": {
     "defocus": true,
     ...

@@ -25,9 +25,7 @@
   "license": "MIT",
   "version": "2.0.3",
   "dependencies": {
-    "es6-shim": "^0.35.0",
-    "tslint": "^5.4.3",
-    "typescript": "^2.4.1"
+    "es6-shim": "^0.35.0"
   },
   "devDependencies": {
     "@types/chai": "^4.0.1",
@@ -41,7 +39,13 @@
     "gulp-typescript": "^3.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.1.0",
-    "run-sequence": "^2.0.0"
+    "run-sequence": "^2.0.0",
+    "tslint": "^5.4.3",
+    "typescript": "^2.4.1"
+  },
+  "peerDependencies": {
+    "tslint": "^5.4.3",
+    "typescript": "^2.4.1"
   },
   "scripts": {
     "clean": "gulp clean",
