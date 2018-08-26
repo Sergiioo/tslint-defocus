@@ -1,1 +1,1 @@
-const test = {test: 123}
+const test = { test: 123 };

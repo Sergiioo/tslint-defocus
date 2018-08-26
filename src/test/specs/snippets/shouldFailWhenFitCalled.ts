@@ -1,5 +1,5 @@
 describe(() => {
-    fit(() => {
-        console.log("testing")
-    });
+  fit(() => {
+    console.log("testing");
+  });
 });
