@@ -1,23 +1,19 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "noImplicitThis": true,
-        "noUnusedParameters": true,
-        "noUnusedLocals": true,
-        "strictNullChecks": true,
-        "importHelpers": true,
-        "declaration": true,
-        "sourceMap": false,
-        "target": "es5",
-        "lib": ["es6"]
-    },
-    "include": [
-        "src/**/*"
-    ],
-    "exclude": [
-        "node_modules",
-        "src/test/specs/snippets"
-    ]
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "importHelpers": true,
+    "declaration": true,
+    "sourceMap": false,
+    "target": "es5",
+    "lib": ["es6"],
+    "outDir": "dist"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "src/test/specs/snippets"]
 }

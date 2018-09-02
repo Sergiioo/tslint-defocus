@@ -29,28 +29,35 @@
   },
   "devDependencies": {
     "@types/chai": "^4.0.1",
-    "@types/mocha": "^2.2.41",
-    "@types/node": "^8.0.7",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.9.2",
     "chai": "^4.0.2",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-spawn-mocha": "^3.1.0",
-    "gulp-tslint": "^8.1.1",
-    "gulp-typescript": "^3.0.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.1.0",
-    "run-sequence": "^2.0.0",
+    "concurrently": "^4.0.1",
+    "husky": "^1.0.0-rc.13",
+    "mocha": "^5.2.0",
+    "prettier": "^1.14.2",
+    "pretty-quick": "^1.6.0",
+    "rimraf": "^2.6.2",
     "tslint": "^5.4.3",
-    "typescript": "^2.4.1"
+    "tslint-config-prettier": "^1.15.0",
+    "typescript": "^3.0.1"
   },
   "peerDependencies": {
-    "tslint": "^5.4.3",
-    "typescript": "^2.4.1"
+    "tslint": "^5.x",
+    "typescript": "^2.x | ^3.x"
   },
   "scripts": {
-    "clean": "gulp clean",
-    "build": "gulp",
-    "help": "gulp help",
-    "test": "gulp test"
+    "clean": "rimraf dist",
+    "build": "tsc",
+    "watch:build": "tsc --watch",
+    "watch:test": "npm run test -- --watch",
+    "watch": "concurrently npm:watch:*",
+    "test": "mocha \"dist/**/*spec.js\"",
+    "lint": "tslint --project tsconfig.json"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }

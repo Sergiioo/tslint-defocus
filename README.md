@@ -5,11 +5,14 @@
 # tslint-defocus
 
 ## About
-This is a tslint rule that warns about focussed Jasmine tests - fdescribe and fit
+
+This is a tslint rule that warns about focussed Jasmine tests - `fdescribe` and `fit`
 
 ## Usage
-* Install with: `npm install tslint-defocus --save-dev`
-* Extend this package in your `.tslint.json` file, e.g.:
+
+- Install with: `npm install tslint-defocus --save-dev` or `yarn add tslint-defocus --dev`
+- Extend this package in your `.tslint.json` file, e.g.:
+
 ```
   "extends": [
     "tslint-defocus"
@@ -18,9 +21,12 @@ This is a tslint rule that warns about focussed Jasmine tests - fdescribe and fi
     "defocus": true,
     ...
 ```
+
 (as per the [instructions for custom rules](http://palantir.github.io/tslint/usage/custom-rules/))
-* Run tslint as you usually would (gulp plugin, directly from node, etc)
-* If you forget to remove a call to `fdescribe` or `fit` then you will see something like from tslint:
+
+- Run `tslint` as you usually would (gulp plugin, directly from node, etc)
+- If you forget to remove a call to `fdescribe` or `fit` then you will see something like from tslint:
+
 ```
 (defocus) app.ts[4, 1]: Calls to 'fdescribe' are not allowed.
 (defocus) app.ts[8, 5]: Calls to 'fit' are not allowed.
@@ -31,10 +37,13 @@ This is a tslint rule that warns about focussed Jasmine tests - fdescribe and fi
 Version 2.0.x of this rule requires version 5.x of tslint.
 
 ## Developer instructions
-* installed the required global npm packages: `npm install gulp --global --no-optional`.
-* Clone [from github](https://github.com/Sergiioo/tslint-defocus)
-* Run `npm run setup` to install and get started
-* Build, lint and unit test by running the default gulp task with: `gulp`
+
+- installed the required global npm packages: `npm install gulp --global --no-optional`.
+- Clone [from github](https://github.com/Sergiioo/tslint-defocus)
+- Run `npm install` or `yarn install` to install and get started
+- This repo uses npm scripts for its build. Try `yarn build` and `yarn test`.
+- There are also watch mode variants - `yarn build:watch` and `yarn test:watch`.
 
 ## License
+
 MIT

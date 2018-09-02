@@ -1,1 +1,1 @@
-let testObject = {fit: "test", test: "fit"}
+let testObject = { fit: "test", test: "fit" };

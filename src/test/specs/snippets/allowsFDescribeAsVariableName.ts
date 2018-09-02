@@ -1,1 +1,1 @@
-const fdescribe = {test: 123}
+const fdescribe = { test: 123 };
